@@ -205,7 +205,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   z-index: 2;
 }
 
-/* Header row: eyebrow + heading + nav controls inline */
 .carousel-header {
   display: flex;
   align-items: flex-end;
@@ -260,7 +259,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
 }
 .carousel-btn:disabled { opacity:.28; cursor:not-allowed; }
 
-/* Progress bar */
 .carousel-progress-track {
   height: 2px;
   background: var(--border);
@@ -275,7 +273,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   transition: width .5s var(--ease);
 }
 
-/* Dot indicators */
 .carousel-dots {
   display: flex;
   gap: 10px;
@@ -296,7 +293,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   box-shadow: 0 0 8px rgba(0,255,136,.5);
 }
 
-/* Scroll hint */
 .carousel-scroll-hint {
   display: flex;
   align-items: center;
@@ -324,7 +320,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
 .scroll-hint-arrow span:nth-child(3) { animation-delay: .30s; opacity:.4; }
 @keyframes arrowPulse { 0%,100%{opacity:1} 50%{opacity:.2} }
 
-/* Card viewport */
 .carousel-viewport {
   position: relative;
   overflow: hidden;
@@ -357,7 +352,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   box-shadow: 0 0 0 1px rgba(0,255,136,.1), 0 32px 80px rgba(0,0,0,.5);
 }
 
-/* Left: visual panel */
 .proj-visual {
   position: relative;
   background: var(--surface2);
@@ -464,7 +458,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   letter-spacing: .08em;
 }
 
-/* Right: description panel */
 .proj-desc-panel {
   padding: 36px 36px 28px;
   display: flex;
@@ -692,7 +685,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   gap: 12px;
 }
 
-/* Image overrides when real img is provided */
 .proj-visual-img {
   position: absolute;
   inset: 0;
@@ -717,7 +709,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   );
 }
 
-/* Cert image fills the left panel */
 .cert-visual-img {
   position: absolute;
   inset: 0;
@@ -744,7 +735,197 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
   align-items: center;
   gap: 12px;
 }
-@media (max-width:960px) {
+
+/* ========= EDUCATION SECTION ========= */
+#education { background: transparent; }
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px 28px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.edu-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--blue));
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.edu-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(0,255,136,.06);
+}
+.edu-card:hover::before { opacity: 1; }
+
+/* Glowing background blob per card */
+.edu-card::after {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,136,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.edu-level-tag {
+  font-family: var(--ff-mono);
+  font-size: 9.5px;
+  color: var(--ink3);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.edu-level-tag::before {
+  content: '';
+  display: block;
+  width: 20px; height: 1px;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+.edu-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.edu-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--surface3);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: box-shadow .3s;
+}
+.edu-card:hover .edu-icon-wrap {
+  box-shadow: 0 0 24px rgba(0,255,136,.15);
+}
+
+.edu-degree {
+  font-family: var(--ff-head);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  line-height: 1.3;
+}
+
+.edu-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 18px;
+}
+
+.edu-institution {
+  font-size: 13px;
+  color: var(--ink2);
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.edu-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.edu-year {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.edu-year-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+.edu-pct-badge {
+  font-family: var(--ff-head);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--green);
+  letter-spacing: -.03em;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.edu-pct-unit {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  color: var(--ink3);
+  font-weight: 400;
+  letter-spacing: .06em;
+}
+
+.edu-bar-track {
+  height: 2px;
+  background: var(--border);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-top: 14px;
+}
+.edu-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--blue));
+  border-radius: 100px;
+  width: 0%;
+  transition: width 1.4s var(--ease);
+}
+
+/* Board / stream tag */
+.edu-board-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid rgba(77,166,255,.25);
+  color: var(--blue);
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  margin-top: 8px;
+  width: fit-content;
+}
+
+@media (max-width: 960px) {
+  .education-grid { grid-template-columns: 1fr; }
   .carousel-header { flex-direction:column; align-items:flex-start; }
   .proj-split-card, .cert-split-card { grid-template-columns:1fr; min-height:auto; }
   .proj-visual { min-height: 200px; border-right:none; border-bottom:1px solid var(--border); }
@@ -768,8 +949,6 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
 .achievement-date{font-family:var(--ff-mono);font-size:10px;color:var(--ink3);margin-top:12px;letter-spacing:.06em;}
 .achievement-badge{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:var(--green-dim);border:1px solid rgba(0,255,136,.2);display:flex;align-items:center;justify-content:center;font-size:16px;}
 
-
-
 /* ZIGZAG TIMELINE */
 #journey{background:transparent;}
 .timeline-zigzag{position:relative;margin-top:60px;display:flex;flex-direction:column;align-items:center;}
@@ -789,16 +968,16 @@ section { padding:110px max(24px,5vw); position:relative; z-index:2; }
 .tz-title{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.03em;margin-bottom:8px;}
 .tz-body{font-size:13px;color:var(--ink2);line-height:1.7;}
 
-/* METRICS */
-#metrics{background:transparent;}
-.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:56px;}
-.metric-card{background:var(--surface);padding:28px;transition:background .2s;}
-.metric-card:hover{background:var(--surface2);}
-.metric-icon{font-size:18px;margin-bottom:16px;}
-.metric-val{font-family:var(--ff-head);font-size:38px;font-weight:900;color:var(--green);letter-spacing:-.04em;line-height:1;margin-bottom:6px;}
-.metric-label{font-size:12.5px;color:var(--ink3);line-height:1.5;margin-bottom:16px;}
-.metric-bar-track{height:1px;background:var(--border);}
-.metric-bar-fill{height:100%;background:var(--green);width:0%;transition:width 1.4s var(--ease);}
+// /* METRICS */
+// #metrics{background:transparent;}
+// .metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:56px;}
+// .metric-card{background:var(--surface);padding:28px;transition:background .2s;}
+// .metric-card:hover{background:var(--surface2);}
+// .metric-icon{font-size:18px;margin-bottom:16px;}
+// .metric-val{font-family:var(--ff-head);font-size:38px;font-weight:900;color:var(--green);letter-spacing:-.04em;line-height:1;margin-bottom:6px;}
+// .metric-label{font-size:12.5px;color:var(--ink3);line-height:1.5;margin-bottom:16px;}
+// .metric-bar-track{height:1px;background:var(--border);}
+// .metric-bar-fill{height:100%;background:var(--green);width:0%;transition:width 1.4s var(--ease);}
 
 /* CONTACT */
 #contact{background:transparent;}
@@ -987,22 +1166,19 @@ function HorizontalCarousel({ items, renderCard, sectionId, eyebrow, heading, he
 
   const viewportRef = useRef(null);
 
-  // Scroll hijack — only fires when the card viewport is FULLY visible
   useEffect(() => {
     const isMobile = () => window.innerWidth <= 960;
 
     const handleWheel = (e) => {
       if (isMobile()) return;
 
-      // Use the card viewport element, not the whole section
       const card = viewportRef.current;
       if (!card) return;
 
       const rect = card.getBoundingClientRect();
       const vh = window.innerHeight;
-      const navH = 70; // nav bar height
+      const navH = 70;
 
-      // The card must be COMPLETELY visible — top below nav, bottom above fold
       const cardFullyVisible = rect.top >= navH && rect.bottom <= vh;
 
       if (!cardFullyVisible) return;
@@ -1016,14 +1192,12 @@ function HorizontalCarousel({ items, renderCard, sectionId, eyebrow, heading, he
         e.preventDefault();
         navigate(-1);
       }
-      // At boundary → normal page scroll continues
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
   }, [navigate, total]);
 
-  // Touch swipe — horizontal
   const touchStartX = useRef(null);
   const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
   const handleTouchEnd = (e) => {
@@ -1044,7 +1218,6 @@ function HorizontalCarousel({ items, renderCard, sectionId, eyebrow, heading, he
       onTouchEnd={handleTouchEnd}
     >
       <div className="container">
-        {/* Header row */}
         <div className="carousel-header">
           <div className="carousel-header-left">
             <span className="section-eyebrow reveal">{eyebrow}</span>
@@ -1071,19 +1244,16 @@ function HorizontalCarousel({ items, renderCard, sectionId, eyebrow, heading, he
           </div>
         </div>
 
-        {/* Progress bar */}
         <div className="carousel-progress-track">
           <div className="carousel-progress-fill" style={{width: `${progressPct}%`}}/>
         </div>
 
-        {/* Viewport */}
         <div className="carousel-viewport" ref={viewportRef}>
           <div className={`carousel-card-slot${animState !== "idle" ? ` ${animState}` : ""}`}>
             {renderCard(items[current], current)}
           </div>
         </div>
 
-        {/* Dot pills + scroll hint */}
         <div className="carousel-dots">
           {items.map((_, i) => (
             <div
@@ -1128,8 +1298,6 @@ const SKILLS=[
 ];
 
 const PROJECTS=[
-  // ▼ To add a project image: set img to a URL or relative path e.g. img:"/images/apni-dukan.png"
-  // If img is null/undefined, the icon emoji + code bg is shown as fallback
   {num:"01",icon:"🏪",img:"../Apnidukan.png",title:"Apni Dukan",sub:"B2B Wholesale E-Commerce Platform",desc:"Scalable wholesale e-commerce platform adopted by 50+ retailers. Features bulk ordering, MongoDB multi-document transactions for atomic order placement, and full inventory management.",stack:["React","Node.js","Express","MongoDB","Twilio","Cloudinary","REST APIs"],improve:"Plan to add supplier dashboards, order analytics, credit-based purchasing & AI-assisted recommendations.",github:"https://github.com/MOHITGODARA1/Apni-DUkan-new",live:"https://apni-dukan-admin-omega.vercel.app/"},
   {num:"02",icon:"🎓",img:"../Unilink.png",title:"UniLink",sub:"University Networking Platform",desc:"University platform engaging 1000+ students for project sharing and cross-department collaboration. JWT + bcrypt auth, real-time Socket.io chat.",stack:["React","Node.js","Express","MongoDB","Socket.io","Twilio","Cloudinary"],improve:"Plan to add university verification, group communities & AI-powered recommendations.",github:"https://github.com/MOHITGODARA1/UniLink",live:"https://unilink-1.onrender.com"},
   {num:"03",icon:"🤖",img:"../Docgen.png",title:"DocGen AI",sub:"GitHub Repository Analyzer",desc:"AI-powered platform that ingests GitHub repos and generates structured analysis — dependencies, execution flow, architecture insights, and AI-generated documentation via ChatGPT pipelines.",stack:["React","Node.js","Express","MongoDB","Python","ChatGPT API","REST APIs"],improve:"Plan to add architecture diagrams, multi-repo comparison & auto-generated README.",github:"https://github.com/MOHITGODARA1/Docgen-AI",live:"https://docgen-ai-b085.onrender.com"},
@@ -1137,38 +1305,83 @@ const PROJECTS=[
 ];
 
 const ACHIEVEMENTS=[
-  {rank:"200+",title:"LeetCode Problems Solved",desc:"Across Easy, Medium & Hard — consistent practice since Jan 2025.",date:"Since Jan' 25",badge:"💡"},
+  {rank:"150+",title:"LeetCode Problems Solved",desc:"Across Easy, Medium & Hard — consistent practice since Jan 2025.",date:"Since Jan' 25",badge:"💡"},
   {rank:"1,657",title:"LeetCode Contest Rating",desc:"Top 21% globally — consistent competitive programming performance.",date:"Feb' 26",badge:"🏆"},
   {rank:"6th",title:"Code-A-Haunt Hackathon",desc:"Ranked 6th out of 100 participants in a competitive hackathon.",date:"Nov' 24",badge:"🥇"},
-  {rank:"7.62",title:"CGPA at LPU",desc:"B.Tech CSE at Lovely Professional University, Phagwara, Punjab.",date:"Since Aug' 23",badge:"🎓"},
+  {rank:"6.22",title:"CGPA at LPU",desc:"B.Tech CSE at Lovely Professional University, Phagwara, Punjab.",date:"Since Aug' 23",badge:"🎓"},
 ];
 
 const CERTS=[
-  // ▼ To add a cert image: set img to a URL e.g. img:"/certs/infosys.png"
-  // If img is null, the large emoji icon is shown as fallback
-  {icon:"🤖",img:"../infosys.png",issuer:"Infosys",title:"ChatGPT-4 Prompt Engineering: Generative AI & LLM",date:"Aug' 25",link:"#"},
-  {icon:"🏢",img:"../allsoft.png",issuer:"Allsoft Solutions",title:"Project Completion — MERN Stack Training",date:"Jul' 25",link:"#"},
-  {icon:"☕",img:"../java.png",issuer:"IamNeo",title:"The Complete Java Certification Course",date:"May' 25",link:"#"},
-  {icon:"⚙️",img:"../cpp.png",issuer:"IamNeo",title:"The Complete C++ Certification Course",date:"Dec' 24",link:"#"},
-  {icon:"🌐",img:"../google.png",issuer:"Google",title:"The Bits and Bytes of Computer Networking",date:"Sep' 24",link:"#"},
+  {icon:"🏢",img:"/Google.png",issuer:"Google",title:"The Bits and Bytes of Computer Networking",date:"Sep' 24",link:"#"},
+  {icon:"☕",img:"/Ibm.png",issuer:"Ibm",title:"Introduction to Hardware and Operating Systems",date:"Sep' 24",link:"#"},
+  {icon:"⚙️",img:"/Uc.png",issuer:"University of Colorado",title:"TCP/IP and Advanced Topics",date:"Oct' 24",link:"#"},
+  {icon:"☕",img:"/Uc2.png",issuer:"University of Colorado",title:"Fundamentals of Network Communication",date:"Oct' 24",link:"#"},
+  {icon:"🏢",img:"/Summerterm.png",issuer:"Gokboru Tech",title:"Project Completion — MERN Stack Training",date:"Jul' 25",link:"#"},
+  {icon:"☕",img:"/Java.png",issuer:"IamNeo",title:"The Complete Java Certification Course",date:"May' 25",link:"#"},
+  {icon:"⚙️",img:"/Oop.png",issuer:"IamNeo",title:"The Complete C Certification Course",date:"Dec' 24",link:"#"},
+  {icon:"☕",img:"/Dsa.png",issuer:"IamNeo",title:"Data Structures and Algorithm",date:"Dec' 24",link:"#"},
+  {icon:"🏢",img:"/Boardinfinity.png",issuer:"BoardInfinity",title:"Full-Stack Development",date:"Feb' 24",link:"#"},
+  {icon:"🤖",img:"/Infosys1.png",issuer:"Infosys",title:"ChatGPT-4 Prompt Engineering: Generative AI & LLM",date:"Aug' 25",link:"#"},
+  {icon:"⚙️",img:"/Infosys2.png",issuer:"Infosys",title:"Master Generative AI & Generative AI tools (ChatGPT & more)",date:"Aug' 25",link:"#"},
+  {icon:"☕",img:"/Infosys3.png",issuer:"Infosys",title:"Build Generative AI Apps and Solutions with No-Code Tools",date:"Aug' 25",link:"#"},
+  {icon:"🤖",img:"/Infosys4.png",issuer:"Infosys",title:"Computational Theory: Language Principle & Finite Automata Theory",date:"Aug' 25",link:"#"},
+  {icon:"🏢",img:"/Infosys5.png",issuer:"Infosys",title:"Introduction to Python",date:"Jan' 24",link:"#"},
+  {icon:"⚙️",img:"/Cloud.png",issuer:"Nptel",title:"Cloud Computing",date:"Apr' 25",link:"#"},
+  {icon:"🤖",img:"/Html.png",issuer:"FreecodeCamp",title:"Responsive Web Design",date:"Oct' 23",link:"#"},
 ];
 
 const JOURNEY=[
-  {phase:"Chapter 01 — Foundation",title:"Building the Base",body:"Mastering Data Structures & Algorithms using C++ and Java. Strong problem-solving fundamentals through consistent LeetCode practice and competitive programming."},
-  {phase:"Chapter 02 — Full Stack",title:"Expanding Horizons",body:"Designing scalable backend systems, RESTful APIs, and database schemas. Building full-stack applications with React, Node.js, Express, and MongoDB."},
-  {phase:"Chapter 03 — Gen AI",title:"From Models to Meaning",body:"Learning Generative AI fundamentals — LLMs, prompt engineering, embeddings, and practical ChatGPT API integration for real-world features."},
-  {phase:"Chapter 04 — System Thinking",title:"Thinking in Constraints",body:"Solving critical LeetCode problems while developing a system-level mindset. Understanding trade-offs in distributed systems, DB design, and caching."},
+  {phase:"Chapter 01 — Think",title:"Building the Base",body:"Understand problems deeply, break them into smaller parts, and build strong logic using DSA and problem-solving practice."},
+  {phase:"Chapter 02 — Plan",title:"Expanding Horizons",body:"Design efficient approaches, choose the right data structures, and structure scalable backend and system architectures."},
+  {phase:"Chapter 03 — Code",title:"From Models to Meaning",body:"Implement solutions using modern technologies like React, Node.js, and integrate APIs including AI-powered features."},
+  {phase:"Chapter 04 — Test & Improve",title:"Thinking in Constraints",body:"Test, debug, optimize performance, and continuously refine systems with better design and system-level thinking."},
 ];
 
-const METRICS=[
-  {icon:"🎯",val:"200+",label:"LeetCode problems solved",pct:78},
-  {icon:"🏆",val:"1,657",label:"Contest rating — Top 21% globally",pct:65},
-  {icon:"✅",val:"5",label:"Certifications completed",pct:85},
-  {icon:"📁",val:"4+",label:"Production projects shipped",pct:70},
+// const METRICS=[
+//   {icon:"🎯",val:"150+",label:"LeetCode problems solved",pct:78},
+//   {icon:"🏆",val:"1,657",label:"Contest rating — Top 21% globally",pct:65},
+//   {icon:"✅",val:"5",label:"Certifications completed",pct:85},
+//   {icon:"📁",val:"4+",label:"Production projects shipped",pct:70},
+// ];
+
+// ─── Education Data ── replace placeholders with your real details ─────────
+const EDUCATION = [
+  {
+    level: "Matriculation · 10th",
+    icon: "🏫",
+    degree: "Secondary School Certificate",
+    institution: "Army Public School, Jodhpur, Rajasthan",
+    board: "CBSE Board",
+    year: "Apr' 2020 – Mar' 2021",
+    pct: 88.0,
+    pctLabel: "88.0%",
+    barWidth: 88,
+  },
+  {
+    level: "Intermediate · 12th",
+    icon: "📚",
+    degree: "Senior Secondary Certificate",
+    institution: "Army Public School, Jodhpur, Rajasthan",
+    board: "CBSE Board · PCM",
+    year: "Apr' 2022 – Mar' 2023",
+    pct: 68.8,
+    pctLabel: "68.8%",
+    barWidth: 68,
+  },
+  {
+    level: "Undergraduate · B.Tech",
+    icon: "🎓",
+    degree: "B.Tech — Computer Science & Engineering",
+    institution: "Lovely Professional University, Phagwara",
+    board: "Expected Graduation 2027",
+    year: "Aug' 2023 – Present",
+    pct: 62.2,
+    pctLabel: "CGPA 6.22",
+    barWidth: 62,
+  },
 ];
 
 // ─── Card renderers ────────────────────────────────────────────────────────
-// Project stats per card
 const PROJ_STATS = {
   "01": [{val:"50+",key:"RETAILERS"},{val:"MERN",key:"STACK"},{val:"REST",key:"API"}],
   "02": [{val:"1K+",key:"USERS"},{val:"RT CHAT",key:"SOCKET"},{val:"JWT",key:"AUTH"}],
@@ -1183,13 +1396,11 @@ function renderProjectCard(p) {
 
   return (
     <div className="proj-split-card">
-      {/* LEFT — Visual panel */}
       <div className="proj-visual">
         {hasImg ? (
           <>
             <img src={p.img} alt={p.title} className="proj-visual-img"/>
             <div className="proj-img-overlay-dark"/>
-            {/* Stats bar still shown over image */}
             <div className="proj-visual-bottom" style={{position:"relative",zIndex:3}}>
               <div className="proj-num-label">PROJECT_{p.num}</div>
               <div className="proj-stat-row">
@@ -1227,7 +1438,6 @@ function renderProjectCard(p) {
         )}
       </div>
 
-      {/* RIGHT — Description panel */}
       <div className="proj-desc-panel">
         <div className="proj-desc-header">
           <div className="proj-title-wrap">
@@ -1241,14 +1451,11 @@ function renderProjectCard(p) {
         </div>
 
         <div className="proj-divider"/>
-
         <p className="proj-full-desc">{p.desc}</p>
-
         <div className="proj-section-label">// tech_stack</div>
         <div className="proj-tech-grid">
           {p.stack.map(t => <span key={t} className="tech-pill">{t}</span>)}
         </div>
-
         <div className="proj-roadmap">
           <div className="proj-roadmap-head">↗ ROADMAP</div>
           <div className="proj-roadmap-text">{p.improve}</div>
@@ -1263,7 +1470,6 @@ function renderCertCard(c, idx) {
 
   return (
     <div className="cert-split-card">
-      {/* LEFT — Visual */}
       <div className="cert-visual" style={{overflow:"hidden"}}>
         {hasImg ? (
           <>
@@ -1283,7 +1489,6 @@ function renderCertCard(c, idx) {
         )}
       </div>
 
-      {/* RIGHT — Info */}
       <div className="cert-desc-panel">
         <div className="cert-index">CERT_{String(idx + 1).padStart(2,"0")}</div>
         <div className="cert-main-title">{c.title}</div>
@@ -1298,6 +1503,55 @@ function renderCertCard(c, idx) {
         </a>
       </div>
     </div>
+  );
+}
+
+// ─── Education Section Component ──────────────────────────────────────────
+function EducationSection() {
+  return (
+    <section id="education">
+      <div className="container">
+        <span className="section-eyebrow reveal">education.json</span>
+        <h2 className="section-heading reveal reveal-delay-1">
+          Academic <span className="hl">Background</span>
+        </h2>
+        <p className="reveal reveal-delay-2" style={{color:"var(--ink3)",marginTop:10,fontSize:13,fontFamily:"var(--ff-mono)"}}>
+          // formal education — from school to university
+        </p>
+
+        <div className="education-grid">
+          {EDUCATION.map((edu, i) => (
+            <div key={edu.level} className={`edu-card reveal-scale reveal-delay-${i + 1}`}>
+              <div className="edu-level-tag">{edu.level}</div>
+
+              <div className="edu-icon-row">
+                <div className="edu-icon-wrap">{edu.icon}</div>
+                <div className="edu-degree">{edu.degree}</div>
+              </div>
+
+              <div className="edu-divider"/>
+
+              <div className="edu-institution">{edu.institution}</div>
+              <div className="edu-board-tag">{edu.board}</div>
+
+              <div className="edu-meta-row">
+                <div className="edu-year">
+                  <div className="edu-year-dot"/>
+                  {edu.year}
+                </div>
+                <div className="edu-pct-badge">
+                  {edu.pctLabel}
+                </div>
+              </div>
+
+              <div className="edu-bar-track">
+                <div className="edu-bar-fill" data-width={edu.barWidth}/>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1348,12 +1602,12 @@ export default function App() {
             <span className="nav-logo-bracket">[</span>&nbsp;AT&nbsp;<span className="nav-logo-bracket">]</span>
           </a>
           <ul className="nav-links">
-            {["about","skills","projects","achievements","certifications","journey","contact"].map(s=>(
+            {["about","skills","projects","achievements","certifications","journey","education","contact"].map(s=>(
               <li key={s}><a href={`#${s}`}>{s}</a></li>
             ))}
           </ul>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <a href="Cv.docx" download className="btn-download" style={{padding:"7px 14px",fontSize:"11px"}}>
+            <a href="Cv.pdf" download className="btn-download" style={{padding:"7px 14px",fontSize:"11px"}}>
               <DownloadIcon/>&nbsp;resume
             </a>
             <a href="#contact" className="btn-nav">hire_me()</a>
@@ -1364,10 +1618,10 @@ export default function App() {
 
       {/* MOBILE MENU */}
       <div id="mobile-menu" className={mobileOpen?"open":""}>
-        {["about","skills","projects","achievements","certifications","journey","contact"].map(s=>(
+        {["about","skills","projects","achievements","certifications","journey","education","contact"].map(s=>(
           <a key={s} href={`#${s}`} onClick={()=>setMobileOpen(false)}>/{s}</a>
         ))}
-        <a href="Cv.docx" download style={{color:"var(--green)"}}>⬇ download resume</a>
+        <a href="Cv.pdf" download style={{color:"var(--green)"}}>⬇ download resume</a>
       </div>
 
       {/* HERO */}
@@ -1391,7 +1645,7 @@ export default function App() {
               <div className="hero-ctas reveal reveal-delay-4">
                 <a href="#projects" className="btn-primary">./view-projects</a>
                 <a href="#contact" className="btn-secondary">./contact-me</a>
-                <a href="Cv.docx" download className="btn-download"><DownloadIcon/>&nbsp;resume.docx</a>
+                <a href="Cv.pdf" download className="btn-download"><DownloadIcon/>&nbsp;Cv.pdf</a>
               </div>
               <div className="hero-meta reveal reveal-delay-5" style={{marginTop:36}}>
                 <div className="hero-meta-item"><div className="hero-meta-val">200+</div><div className="hero-meta-label">LC_SOLVED</div></div>
@@ -1476,7 +1730,7 @@ export default function App() {
               <div className="reveal reveal-delay-4" style={{marginTop:28,display:"flex",gap:10,flexWrap:"wrap"}}>
                 <a href="https://github.com/Abhaythakur27" target="_blank" rel="noreferrer" className="btn-secondary" style={{fontSize:11}}><GitHubIcon/>&nbsp;GitHub</a>
                 <a href="https://www.linkedin.com/in/abhay27/" target="_blank" rel="noreferrer" className="btn-secondary" style={{fontSize:11}}>LinkedIn ↗</a>
-                <a href="Cv.docx" download className="btn-download" style={{fontSize:11}}><DownloadIcon/>&nbsp;resume.docx</a>
+                <a href="Cv.pdf" download className="btn-download" style={{fontSize:11}}><DownloadIcon/>&nbsp;Cv.pdf</a>
               </div>
             </div>
           </div>
@@ -1589,7 +1843,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* METRICS */}
+      {/* METRICS
       <section id="metrics">
         <div className="container">
           <span className="section-eyebrow reveal">metrics.json</span>
@@ -1605,7 +1859,10 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+      {/* ── EDUCATION ── placed just before Contact ── */}
+      <EducationSection />
 
       {/* CONTACT */}
       <section id="contact">
@@ -1634,9 +1891,9 @@ export default function App() {
                   <div className="social-icon">📱</div>
                   <div><div className="social-name">Phone</div><div className="social-handle">+91 8219651535</div></div>
                 </a>
-                <a href="Cv.docx" download className="social-link reveal reveal-delay-4" style={{borderColor:"rgba(0,255,136,.3)"}}>
+                <a href="Cv.pdf" download className="social-link reveal reveal-delay-4" style={{borderColor:"rgba(0,255,136,.3)"}}>
                   <div className="social-icon" style={{background:"var(--green-dim)",borderColor:"rgba(0,255,136,.2)"}}>📄</div>
-                  <div><div className="social-name" style={{color:"var(--green)"}}>Download Resume</div><div className="social-handle">Cv.docx</div></div>
+                  <div><div className="social-name" style={{color:"var(--green)"}}>Download Resume</div><div className="social-handle">Cv.pdf</div></div>
                 </a>
               </div>
             </div>
@@ -1683,8 +1940,8 @@ export default function App() {
       <footer>
         <div className="footer-copy">// © 2026 Abhay Thakur · built with precision</div>
         <div style={{display:"flex",alignItems:"center",gap:16}}>
-          <a href="Cv.docx" download className="btn-download" style={{padding:"6px 14px",fontSize:"10px"}}>
-            <DownloadIcon/>&nbsp;resume.docx
+          <a href="Cv.pdf" download className="btn-download" style={{padding:"6px 14px",fontSize:"10px"}}>
+            <DownloadIcon/>&nbsp;Cv.pdf
           </a>
           <span className="footer-back" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}>^ back_to_top()</span>
         </div>
